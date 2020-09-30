@@ -1,0 +1,19 @@
+{
+  "name": "ecommers_mobile",
+  "version": "1.0.0",
+  "description": "E-Commers based mobile application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarvinLara41/Ecommers_Mobile.git"
+  },
+  "author": "Marvin L",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarvinLara41/Ecommers_Mobile/issues"
+  },
+  "homepage": "https://github.com/MarvinLara41/Ecommers_Mobile#readme"
+}
