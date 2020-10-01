@@ -1,18 +1,30 @@
 import React from 'react';
-import { FlastList, Text } from 'react-native';
-/**tapping into the redux store using  useSelector */
+import { FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
+
+import ProductItem from '../../components/shop/productItem';
 
 const ProductsOverViewScreen = (props) => {
 	const products = useSelector((state) => state.products.availableProducts);
 	return (
-		<FlastList
+		<FlatList
 			data={products}
 			keyExtractor={(item) => item.id}
-			/**renderItem renders different list properties */
-			renderItem={(itemData) => <Text> {itemData.item.title}</Text>}
+			renderItem={(itemData) => (
+				<ProductItem
+					image={itemData.item.imageUrl}
+					title={itemData.item.title}
+					price={itemData.item.price}
+					onViewDetails={() => {}}
+					onAddToCart={() => {}}
+				/>
+			)}
 		/>
 	);
+};
+
+ProductsOverViewScreen.navigationOptions = {
+	headerTitle: 'All Products',
 };
 
 export default ProductsOverViewScreen;
