@@ -1,33 +1,50 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Button } from 'react-native';
+import {
+	View,
+	Text,
+	Image,
+	StyleSheet,
+	Button,
+	TouchableOpacity,
+	TouchableNativeFeedback,
+	Platform,
+} from 'react-native';
 
 import Colors from '../../constants/colors';
 
 const ProductItem = (props) => {
+	/** adding a repple effect to the application based on andriod version. if the Platform is not andriod it will not be used, if it is andriod and the verison is above 21 the effect will take place, wrapping the component with TouchableCmp will allow this to take place. useForeground is needed for the repple effect to be applied on the entire component */
+	let TouchableCmp = TouchableOpacity;
+	if (Platform.OS === 'andriod' && Platform.Version >= 21) {
+		TouchableCmp = TouchableNativeFeedback;
+	}
+
 	/**passing props to this component allows access to data */
 	/** imageContainer is needed to prevent the overflow of the image, this allows to have rounded corners on the image */
 	return (
-		<View style={styles.product}>
-			<View style={styles.imageContainer}>
-				<Image style={styles.image} source={{ uri: props.image }} />
-				<View style={styles.details}>
-					<Text style={styles.title}>Title:{props.title} </Text>
-					<Text style={styles.price}>Price:${props.price}</Text>
-				</View>
-				<View style={styles.actions}>
-					<Button
-						color={Colors.primary}
-						title="Details"
-						onPress={props.onViewDetails}
-					/>
-					<Button
-						color={Colors.primary}
-						title="Cart"
-						onPress={props.onAddToCart}
-					/>
+		<TouchableCmp onPress={props.onViewDetails} useForeground>
+			<View style={styles.product}>
+				<View style={styles.imageContainer}>
+					<Image style={styles.image} source={{ uri: props.image }} />
+					<View style={styles.details}>
+						<Text style={styles.title}>Title:{props.title} </Text>
+						<Text style={styles.price}>Price:${props.price}</Text>
+					</View>
+					<View style={styles.actions}>
+						<Button
+							color={Colors.primary}
+							title="Details"
+							onPress={props.onViewDetails}
+						/>
+						<Button
+							color={Colors.primary}
+							title="Cart"
+							onPress={props.onAddToCart}
+						/>
+					</View>
 				</View>
 			</View>
-		</View>
+		</TouchableCmp>
 	);
 };
 
