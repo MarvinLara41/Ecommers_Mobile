@@ -19,6 +19,8 @@ const ProductDetailScreen = (props) => {
 	);
 
 	/** */
+	
+
 	return (
 		<View>
 			<Text> {selectedProduct.title} </Text>
