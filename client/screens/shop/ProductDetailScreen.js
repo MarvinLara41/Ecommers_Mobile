@@ -7,6 +7,7 @@ import {
 	Text,
 	Image,
 } from 'react-native';
+//importing useSelector to select a single product
 import { useSelector } from 'react-redux';
 
 const ProductDetailScreen = (props) => {
@@ -19,12 +20,16 @@ const ProductDetailScreen = (props) => {
 	);
 
 	/** */
+
 	
 
 	return (
-		<View>
-			<Text> {selectedProduct.title} </Text>
-		</View>
+		<ScrollView>
+			<Image style={styles.image} source={{uri: selectedProduct.imageUrl}}/>
+			<Button title='Add to Cart' onPress={() => {}}/>
+			<Text style={styles.price}> ${selectedProduct.price.toFixed(2)}</Text>
+			<Text style={styles.description}> {selectedProduct.description}</Text>
+		</ScrollView>
 	);
 };
 
@@ -35,6 +40,22 @@ ProductDetailScreen.navigationOptions = (navData) => {
 	};
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	image: {
+		width: '100%',
+			height: 300
+		,
+		price:{ 
+			fontSize: 100,
+			color:'#888',
+			textAlign: 'center',
+			marginVertical: 20
+		},
+		description:{ 
+			fontSize: 14,
+			textAlign: 'center'
+		}
+	}
+});
 
 export default ProductDetailScreen;
