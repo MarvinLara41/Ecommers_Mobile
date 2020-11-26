@@ -26,7 +26,10 @@ const ProductDetailScreen = (props) => {
 	return (
 		<ScrollView>
 			<Image style={styles.image} source={{uri: selectedProduct.imageUrl}}/>
-			<Button title='Add to Cart' onPress={() => {}}/>
+	 			<View style={styles.actions}>
+<Button title='Add to Cart' onPress={() => {}}/>
+			</View>
+			
 			<Text style={styles.price}> ${selectedProduct.price.toFixed(2)}</Text>
 			<Text style={styles.description}> {selectedProduct.description}</Text>
 		</ScrollView>
@@ -43,19 +46,34 @@ ProductDetailScreen.navigationOptions = (navData) => {
 const styles = StyleSheet.create({
 	image: {
 		width: '100%',
-			height: 300
-		,
-		price:{ 
-			fontSize: 100,
-			color:'#888',
-			textAlign: 'center',
-			marginVertical: 20
-		},
-		description:{ 
-			fontSize: 14,
-			textAlign: 'center'
-		}
+		height: 300
+		
+	},
+	description: {
+		/** marginHorizontal creates a even margin on the right and left side of the display. */
+		marginHorizontal: 20,
+		textAlign: 'center',
+		fontSize: 14
 	}
+	,
+	price:{
+		fontSize: 20,
+		color: '#888',
+		textAlign: 'center',
+		marginVertical: 20,
+		fontFamily: 'open-sans-bold'
+	},
+	description: {
+		fontSize: 14,
+		textAlign: 'center',
+		fontFamily: 'open-sans'
+	},
+	actions: {
+		marginVertical: 10,
+		alignItems: 'center',
+
+	}
+	
 });
 
 export default ProductDetailScreen;
